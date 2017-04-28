@@ -112,6 +112,7 @@ brew cask install safari-technology-preview
 
 # coding
 brew cask install atom
+brew cask install hyper
 
 # essential
 brew cask install 1password
