@@ -1,0 +1,26 @@
+# this should live in ~/.gitconfig
+
+[credential]
+	helper = osxkeychain
+[user]
+	signingkey = 2E6C844F4E835E3F
+	name = Alexis Tyler
+	email = xo@wvvw.me
+[url "ssh://git@github.com/"]
+        insteadOf = https://github.com/
+[url "ssh://git@bitbucket.org/"]
+        insteadOf = https://bitbucket.org/
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
+[core]
+    excludesfile = ~/.gitignore
+    editor = nano
+[commit]
+    gpgsign = true
+[help]
+    autocorrect = 1
+[push]
+    default = simple

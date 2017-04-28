@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# This makes nvm usable in here
+# https://github.com/creationix/nvm/issues/521#issuecomment-55001510
+. ~/.nvm/nvm.sh
+
+# Let's make sure we're running the latest nvm before updating node
+nvm upgrade
+nvm install node --reinstall-packages-from=node
+nvm use node
+nvm alias default node

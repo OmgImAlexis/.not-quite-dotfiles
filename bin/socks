@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+function socks
+{
+    if [ "$1" = "on" ]; then
+        echo "Getting dressed"
+        # checks to see if there's an existing SSH tunnel and if not, it starts one
+        if [[ -z $(lsof -n -i :8080 | grep 'ssh' | awk '{print $2;}') ]]; then
+            echo "Putting my socks on"
+            sudo networksetup -setsocksfirewallproxy "Ethernet" localhost 8080
+            sudo networksetup -setsocksfirewallproxy "Wi-Fi" localhost 8080
+            ssh -C2qTnNf -D 8080 root@dokku
+            echo "My socks are on!"
+        else
+            echo "I have socks on, I'm not putting on another pair! 😒"
+        fi
+    elif [ $1 = "off" ]; then
+        if [[ -z $(lsof -n -i :8080 | grep 'ssh' | awk '{print $2;}') ]]; then
+            echo "I'm not wearing any socks?"
+        else
+            echo "Taking my socks off"
+            sudo networksetup -setsocksfirewallproxystate "Ethernet" off
+            sudo networksetup -setsocksfirewallproxystate "Wi-Fi" off
+            kill -9 $(lsof -n -i :8080 | grep 'ssh' | awk '{print $2;}')
+            echo "I'm naked! 😱"
+        fi
+    elif [ $1 = "status" ]; then
+        if [[ -z $(lsof -n -i :8080 | grep 'ssh' | awk '{print $2;}') ]]; then
+            echo "My socks are off!"
+        else
+            echo "My socks are on!"
+        fi
+    else
+        echo "Huh?"
+    fi
+}
+
+#
+# If the number of arguments are less than 1 let the idiot know!
+#
+if [ $# -lt 1 ]; then
+  echo "Error: I can only put socks on or off, WTF?"
+  exit 1
+fi
+
+
+# calls must come after function definitions
+socks $@;
+

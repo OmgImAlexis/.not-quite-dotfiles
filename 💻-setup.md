@@ -1,4 +1,4 @@
-💁 Hello, future Monica. Here's some shit you might need:
+💁 Hello, future Alexis. Here's some shit you might need:
 
 ## Apps to install
 
@@ -6,8 +6,6 @@
 - [ ] [Atom](https://atom.io)
 - [ ] [Slack](https://slack.com)
 - [ ] [1Password](https://1password.com/)
-    - This will make you download the Dropbox app
-    - 💣 Dropbox has 2FA, so make sure your Authenticator app isn't hosed
 
 ## Copying your iMessages over OMG.
 This took way too long to figure out.

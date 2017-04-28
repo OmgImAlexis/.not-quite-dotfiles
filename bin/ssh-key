@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Stolen with love from https://github.com/nicksp/dotfiles/blob/master/bin/ssh-key
+
+# Print public SSH key to clipboard. Generate it if necessary
+
+file="$HOME/.ssh/id_rsa.pub"
+if [ ! -f "$file" ]; then
+    ssh-keygen -t rsa
+fi
+
+cat "$file"
